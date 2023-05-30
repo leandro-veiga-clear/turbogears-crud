@@ -3,14 +3,14 @@
 
 from tg import expose, redirect, validate, flash, url
 # from tg.i18n import ugettext as _
-# from tg import predicates
+from tg import predicates
 
 from crud.lib.base import BaseController
 from crud.model import DBSession, Product
 
 class ProductController(BaseController):
     # Uncomment this line if your controller requires an authenticated user
-    # allow_only = predicates.not_anonymous()
+    allow_only = predicates.not_anonymous()
 
     @expose('crud.templates.products_list')
     def index(self, **kw):
