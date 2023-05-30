@@ -1,31 +1,38 @@
 <html py:extends="master.xhtml" py:strip="True">
     <head py:block="head" py:strip="True">
-        <title py:block="master_title">Product</title>
+        <title py:block="master_title">Products</title>
     </head>
 
     <body py:block="body" py:strip="True">
       <div class="row">
         <div class="col-md-12">
           <h2>Products</h2>
-          <button>new product</button>
+          <a href="/product/new">
+            <button>new product</button>
+          </a>
           <table>
             <thead>
               <th>id</th>
               <th>name</th>
+              <th>price</th>
               <th>actions</th>
             </thead>
             <tbody>
-              <tr py:for="product in data">
+              <tr py:for="product in products">
                 <td>${product.id}</td>
                 <td>${product.name}</td>
+                <td>${product.price}</td>
                 <td>
-                  <button>edit</button>
-                  <button>delete</button>
+                  <a href="/product/edit?id=${product.id}">
+                    <button>edit</button>
+                  </a>
+                  <a href="/product/delete?id=${product.id}">
+                    <button>delete</button>
+                  </a>
                 </td>
               </tr>
             </tbody>
           </table>
-          <!-- <div>${grid.display(value=data)}</div> -->
         </div>
       </div>
     </body>

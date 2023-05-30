@@ -44,6 +44,7 @@ def bootstrap(command, conf, vars):
 
         pr = model.Product()
         pr.name = "product_1"
+        pr.price = 100.2
         model.DBSession.add(pr)
 
         model.DBSession.flush()

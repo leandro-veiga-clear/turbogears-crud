@@ -1,0 +1,34 @@
+<html py:extends="master.xhtml" py:strip="True">
+
+    <head py:block="head" py:strip="True">
+        <title py:block="master_title">Product</title>
+    </head>
+
+    <body py:block="body" py:strip="True">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 py:if="product">Edit Product</h2>
+                <h2 py:if="product==None">New Product</h2>
+            </div>
+            <form action="/product/save" method="post">
+                <div py:if="product">
+                    <input type="hidden" name="id" value="${product.id}"/>
+                </div>
+                <label>
+                    Name: <input name="name" py:if="product" value="${product.name}" /> 
+                    <input name="name" py:if="product==None"/> 
+                </label>
+                <br/>
+                <label>
+                    Price: <input name="price" py:if="product" value="${product.price}" /> 
+                    <input name="name" py:if="product==None" /> 
+                </label>
+                <br/>
+                <button type="submit" >
+                    <div py:content="button_label">create</div>
+                </button>
+            </form>
+        </div>
+    </body>
+
+</html>
