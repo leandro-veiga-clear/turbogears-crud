@@ -92,6 +92,20 @@ class RootController(BaseController):
         return dict(page='login', login_counter=str(login_counter),
                     came_from=came_from, login=login)
 
+    @expose('crud.templates.signup')
+    def signup(self, **kw):
+        """Start the user login."""
+        if 'user_name' in kw:
+            user = model.User()
+            user.user_name = kw['user_name']
+            user.email_address = kw['email_address']
+            user.password = kw['password']
+            model.DBSession.add(user)
+            flash('User created, now you need to login!')
+            redirect('/login')
+
+        return dict(page='signup')
+
     @expose()
     def post_login(self, came_from=lurl('/')):
         """
