@@ -94,7 +94,6 @@ class RootController(BaseController):
 
     @expose('crud.templates.signup')
     def signup(self, **kw):
-        """Start the user login."""
         if 'user_name' in kw:
             user = model.User()
             user.user_name = kw['user_name']
